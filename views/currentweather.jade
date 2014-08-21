@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+
+  // Wrapper
+  #wrapper
+
+        // CITY LIST
+        #cityList
+            table
+                thead
+                    th City
+                    th State
+                    th Current Temperature (F)
+                    th Max - Min Temperature (F)
+                    th Overall Weather
+                tbody
+                for result in results
+                 tr
+                  td #{result.location.city}
+                  td #{result.location.state}
+                  td #{result.current_observation.temp_f}
+                  td #{result.current_observation.dewpoint_f} - #{result.current_observation.heat_index_f}
+                  td 
+                   img(src="#{result.current_observation.icon_url}", alt="current condition" )
+        // /CITY LIST
+        .img-box
+         img(src="http://icons.wxug.com/graphics/wu2/logo_130x80.png",alt="weather source" height="45" width="60")
+    // /WRAPPER
